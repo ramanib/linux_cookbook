@@ -1,0 +1,231 @@
+-> PATH="$PATH:/home/user/bin"
+       $ export PATH
+
+-> run env to obtain environment variables 
+    or use : cat /proc/$PID/environ 
+
+-> When a terminal is opened it initially executes a set of commands to define various settings
+    like prompt text, colors, and many more. This set of commands (run commands) are read
+     from a shell script called .bashrc, which is located in the home directory of the user (~/.
+     bashrc). The bash shell also maintains a history of commands run by the user. It is available
+     in the file ~/.bash_history. 
+
+
+-> PS1="\e[1;33mramani@myprompt> \e[0m" #change the prompt
+
+-> **doing math**
+
+-> result=`expr 3 + 4` #the quote symbol around expr can be confused
+
+->     <<<<<<<  It is also possible to redirect stderr and stdout to a single file by converting stderr
+               to stdout using this preferred method:
+                $ cmd 2>&1 output.txt
+                or an alternate approach:
+                $ cmd &> output.txt  >>>>>>>
+
+
+-> dmesg | less # dispays the startup msgs of the boot time
+
+-> stdin : < : 0
+-> stdout : > : 1
+-> stderr : >> : 2
+-> /dev/null is a special
+      device file where any data received by the file is discarded. 
+
+
+-> We can use stdin as a command argument. It can be done by using – as the filename
+    argument for the command as follows:
+    $ cmd1 | cmd2 | cmd -
+
+-> Alternately, we can use /dev/stdin as the output filename to use stdin.
+
+-> *Redirecting from a text block enclosed within a script* #example not getting expected output
+
+-> We can create our own custom file descriptors using the exec command. # exec 3<input.txt ; $ cat <&3
+
+-> #~/.bashrc setting the ps1 variable value failed
+
+-> echo -e option #suppresses the output as opposed to echo which displays the data to stdout
+ 
+-> Set terminal I/O options for the current standard input device. #stty commmand
+
+-> One line is read from the standard input, and the first word is assigned to the first name, the second word to the second name,
+           and so on, with leftover words and their intervening separators assigned to the last name.If no names are supplied, the line read is 
+           assigned to the variable REPLY. The return code is zero, unless end-of-file is encountered or read times out.
+
+-> Coordinated Universal Time : UTC TIME
+
+-> export HISTCONTROL=ignorespace #ignores a command from history if preceeded by a space
+
+-> export HISTCONTROL=erasedups #remove duplicate cmds from history
+
+-> export HISTCONTROL=ignoredups #remove consecutively repeated cmd from history
+
+-> bash 101 hacks<#not found> and <tput cmd #practised little> 
+
+-> debugging script
+
+-> IFS : internal field separator function for bash shell.
+
+_________________________________________________________________________________________________________________________________________________
+-> shell is simply a macro processor that executes commands. The term macro processor means functionality where text and symbols are expanded to create larger expressions.
+
+A Unix shell is both a command interpreter and a programming language. As a command interpreter, the shell provides the user interface to the rich set of GNU utilities. The programming language features allow these utilities to be combined. Files containing commands can be created, and become commands themselves. These new commands have the same status as system commands in directories such as /bin, allowing users or groups to establish custom environments to automate their common tasks.
+
+Shells may be used interactively or non-interactively. In interactive mode, they accept input typed from the keyboard. When executing non-interactively, shells execute commands read from a file. 
+
+Bash is the shell, or command language interpreter, for the GNU operating system.    #derinide-aq  nasalspray
+__________________________________________________________________________________________________________________________________________________
+
+-> ramani@myprompt>echo $BASH
+/bin/bash
+
+-> ramani@myprompt>cmd_output=`ls | nl`  #stores cmd output in a variable
+ 
+-> how to read from a file specified num of lines
+
+-> for loop not iterating through list of alphabets and test_demo_ch1.sh not running
+
+-> Learning the bash Shell #a textbook
+
+-> To delete all NULL characters from a file    :   tr -d '\0' < textfile > newfile
+
+-> http://www.folkstalk.com/2011/12/101-examples-of-using-find-command-in.html #find command tutorial
+
+-> find . -mtime -1  : Find the files which are modified within 1 day.
+
+-> Finding directories : find . -type d
+
+-> find where-to-look criteria what-to-do
+            1)find . -type f -name "*.swp" -delete  # delete .swp files
+            2)find . -type f -perm 644 -print  # Print files having permission 644
+
+-> use prune in find to discard a specific directory in the -path option of find
+ 
+-> find has its file types listed in chapter 2 of cookbook
+criteria: * -path
+         * -name
+         * -iname
+         * -regex
+         * -iregex
+         * !-name, !-regex ...
+         * -maxdepth,-mindepth
+         * -type
+         * -atime,-ctime,-mtime,-amin
+         * -user
+         * -newer,-size
+         * -perm
+
+ todo:   * -print,-delete
+
+
+-> date  --date="next Wednesday" #http://www.cyberciti.biz/tips/linux-unix-get-yesterdays-tomorrows-date.html : future date
+
+-> learn about file mode permissions
+ 
+-> python std lib, unix shell scriptng, 
+
+-> "$@" expands as "$1" "$2" "$3" and so on
+
+-> echo $?; # return value of commands is obtained
+
+-> xargs : http://www.folkstalk.com/2012/07/xargs-command-examples-in-unix-linux.html 
+
+-> {} is the default argument list marker.
+
+-> While and subshell trick with stdin # should be revised again
+
+-> cat filename | tr -c [set1]  : will include set1 i.e. complements set1 elements when it reads file contents as stdin input
+
+-> $? : will display the exit status of a command
+
+-> The sort command uses the space or tab as the default delimiter
+
+-> sorting page 77  and String pattern generation with uniq 
+
+-> pep8 guideline
+
+-> http://www.cyberciti.biz/tips/renaming-multiple-files-at-a-shell-prompt.html: # rename command
+
+-> rename *.JPG *.jpg, rename .bak .txt *.bak  #not working
+
+-> Executing commands or actions with find is done with -exec option of find
+
+-> Recursively rename all the files by replacing space with "_" character as follows: $ find path -type f -exec rename 's/ /_/g' {} \;
+
+-> !find will repeat the last find command executed.
+
+                  #Read more: http://javarevisited.blogspot.com/2011/03/10-find-command-in-unix-examples-basic.html#ixzz26zpb0pkh
+
+-> find . -regex '.ab*' -print # NOT WORKING
+
+-> look echo ./shell_script_linux # not working ; look and aspell
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
