@@ -118,6 +118,7 @@ criteria: * -path
 
  todo:   * -print,-delete
 
+-> find . -maxdepth 2 -name "m*" -print
 
 -> date  --date="next Wednesday" #http://www.cyberciti.biz/tips/linux-unix-get-yesterdays-tomorrows-date.html : future date
 
